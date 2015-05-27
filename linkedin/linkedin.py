@@ -438,6 +438,13 @@ class LinkedInApplication(object):
         raise_for_error(response)
         return response.json()
 
+    def comment_as_company(self, company_id, update_key, comment):
+        comment = {'comment': comment}
+        url = '%s/updates/key=%s/update-comments-as-company' % (ENDPOINTS.COMPANIES, company_id, update_key)
+        response = self.make_request('PUT', url, data=json.dumps(comment))
+        raise_for_error(response)
+        return True
+
     def get_job(self, job_id, selectors=None, params=None, headers=None):
         url = '%s/%s' % (ENDPOINTS.JOBS, str(job_id))
         url = '%s:(%s)' % (url, LinkedInSelector.parse(selectors))
