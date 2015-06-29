@@ -327,7 +327,6 @@ class LinkedInApplication(object):
                 'title': content_title,
                 'description': description
             }
-        }
         if submitted_image_url:
             post['content']['submitted-image-url'] = submitted_image_url
 
