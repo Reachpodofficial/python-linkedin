@@ -78,6 +78,10 @@ API_SECRET = 'daJDa6_8UcnGMw1yuq9TjoO_PMKukXMo8vEMo7Qv5J-G3SPgrAV0FqFCd0TNjQyG'
 RETURN_URL = 'http://localhost:8000'
 
 authentication = linkedin.LinkedInAuthentication(API_KEY, API_SECRET, RETURN_URL, linkedin.PERMISSIONS.enums.values())
+# Optionally one can send custom "state" value that will be returned from OAuth server
+# It can be used to track your user state or something else (it's up to you)
+# Be aware that this value is sent to OAuth server AS IS - make sure to encode or hash it
+#authorization.state = 'your_encoded_message'
 print authentication.authorization_url  # open this url on your browser
 application = linkedin.LinkedInApplication(authentication)
 ```
@@ -112,7 +116,7 @@ application = server.quick_api(KEY, SECRET)
 This will print the authorization url to the screen. Go into that URL using a browser to grant access to the application. After you do so, the method will return with an API object you can now use.
 
 ## Profile API
-The Profile API returns a member's LinkedIn profile. You can use this call to return one of two versions of a user's profile which are **public profile** and **standart profile**. For more information, check out the [documentation](http://developers.linkedin.com/documents/profile-api).
+The Profile API returns a member's LinkedIn profile. You can use this call to return one of two versions of a user's profile which are **public profile** and **standard profile**. For more information, check out the [documentation](http://developers.linkedin.com/documents/profile-api).
 
 ```python
 application.get_profile()
